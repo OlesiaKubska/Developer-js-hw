@@ -1,11 +1,14 @@
 // task 2 (Day.js, date-fns, temporal)
 
 
-// function getDay() {
-//     let today = new Date();
+function getDay() {
+    let daysNamesInPolish = ["niedziela", "pon", "wt", "sr", "cz", "pt", "sob"];
+    let today = new Date();
 
-//     let currentDayIndex = today.getDay();
-//     console.log(daysInPolish(currentDayIndex));
-// }
+    let currentDayIndex = today.getDay();
 
-// getDay();
+    return daysNamesInPolish[currentDayIndex];
+    
+}
+
+console.log(getDay());

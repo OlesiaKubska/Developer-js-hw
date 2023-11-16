@@ -1,15 +1,15 @@
 //task 3  Math-JS  random
 
 
-// function randomFromRange(min, max) {
-//     let randomNumber = Math.random();
+function randomFromRange(min, max) {
+    let randomNumber = Math.random();
 
-//     let maxNumber = max - min + 1;
+    let maxNumber = max - min + 1;
 
-//     console.log(randomNumber);
+    console.log(randomNumber);
 
-//     let result = randomNumber * maxNumber;
-//     console.log(result);
-// }
+    let result = randomNumber * maxNumber;
+    console.log(result);
+}
 
-// randomFromRange(2, 5);
+randomFromRange(2, 5);
