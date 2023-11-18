@@ -11,7 +11,7 @@ function binarySearch(arr, target) {
     //jest mniejszy lub równy prawemu wskaźnikowi(right), 
     //co oznacza, że obszar wyszukiwania nie został jeszcze zawężony do jednego elementu.
     while (left <= right) {
-        const mid = Math.floor((left + right) / 2); //Znajduje środkowy indeks obszaru wyszukiwania. Użycie Math.floor gwarantuje, że wynik jest liczbą całkowitą.
+        let mid = Math.floor((left + right) / 2); //Znajduje środkowy indeks obszaru wyszukiwania. Użycie Math.floor gwarantuje, że wynik jest liczbą całkowitą.
         if (arr[mid] === target) {
             return mid; //Jeśli element w środku (arr[mid]) jest równy szukanemu elementowi (target), zwracany jest jego indeks.
         } else if (arr[mid] < target) {
