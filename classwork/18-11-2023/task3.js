@@ -2,11 +2,12 @@
 
 const number = [12, 23, 54, 123, 22, 90, 53, 80];
 
-function filteredNumber (arrOfNumber) {
-    return myArray.filter((number) => {
-        return 
-    })
-    
-}
+const result = numbers.filter((number) => {
+    if (number % 2 === 1) {
+        return true;
+    }
 
-console.log();
+    return false;
+    });
+
+console.log(result); // [ 23, 123, 53 ]
