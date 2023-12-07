@@ -1,6 +1,6 @@
 //IIFE async-await
 
-const API_URL = "https://....";
+const API_URL = "https://jsonplaceholder.typicode.com/users";
 
 async function getUser(userId) {
     const response = await fetch(`${API_URL}/${userId}`);

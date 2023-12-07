@@ -19,5 +19,4 @@ function sos() {
     console.log("Help");
 }
 
-
 sendSos(sos, 2000, 20000);

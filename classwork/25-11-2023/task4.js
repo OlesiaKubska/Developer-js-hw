@@ -1,6 +1,6 @@
 //fetch-json
 
-const API_URL = "https://....";
+const API_URL = "https://jsonplaceholder.typicode.com/users";
 
 function getUser(userId) {
     return fetch(`${API_URL}/${userId}`);

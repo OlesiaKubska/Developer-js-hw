@@ -1,6 +1,6 @@
 //fetch-multiple data
 
-const API_URL = "https://....";
+const API_URL = "https://jsonplaceholder.typicode.com/users";
 
 const ids = [2, 5, 6, 8];
 
