@@ -1,4 +1,4 @@
-const Car = require('./car-class');
+const Car = require('./task6');
 
 function getFromFactory(amountOfCars) {
     return new Promise((resolve, reject) => {

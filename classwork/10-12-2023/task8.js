@@ -3,6 +3,7 @@
 // A method to add a car (that would check if the input object is a car)
 // A method to remove a car by ID
 // A getter that would return the total price of all cars in the storage
+const Car = require('./task6.js');
 
 class CarDealer {
     #listOfCars = [];
@@ -25,16 +26,11 @@ class CarDealer {
 
     removeCar(id) {
         this.#listOfCars = this.#listOfCars.filter((car) => car.id !== id);
-
-    }
-
-    get availableCars() {
-
     }
 
     get totalPrice() {
-        
+        return this.#listOfCars.reduce((total, car) => total + car.price, 0);
     }
 }
 
-const myDealer = new myDealer;
+const myDealer = new CarDealer();

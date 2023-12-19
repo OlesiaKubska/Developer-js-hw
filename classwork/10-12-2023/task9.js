@@ -2,7 +2,7 @@
 // Add new methods
 // A method to accept car return, method should mark car as refund
 // Add a static method, that would check if a given car is a refund car (it will have ”REFUND” status)
-
+const Car = require('./task6');
 const { CAR_STATUS } = require("./const");
 
 class CarDealer {
@@ -37,13 +37,13 @@ class CarDealer {
         this.#listOfCars.push(car);
     }
 
-    get availableCars() {
-
+    get totalPrice() {
+        return this.#listOfCars.reduce((total, car) => total + car.price, 0);
     }
 
-    get totalPrice() {
-        
+    static isCarAfterRefund(car) {
+        return Car.isRefund(car);
     }
 }
 
-const myDealer = new myDealer;
+const myDealer = new CarDealer();

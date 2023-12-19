@@ -5,45 +5,59 @@
 // Add static method to check if car is after return
 
 const { CAR_STATUS } = require("./const");
+let count = 0;
+
+function getId() {
+    count++;
+    return count;
+}
 
 class Car {
     wheels = 4;
-    status = "NEW";
+    status = CAR_STATUS.NEW;
 
-    constructor(accelaration, maxSpeed) {
-        this.accelaration = accelaration;
+    constructor(acceleration, maxSpeed, price, productionDate) {
+        // this.id = Date.now();
+        this.id = getId();
+        this.acceleration = acceleration;
         this.maxSpeed = maxSpeed;
-        this.price = this.price;
-        this.productionDate = new Date(this.productionDate);
-        this.id = Date.now();
+        this.price = price;
+        this.productionDate = productionDate
+            ? new Date(productionDate)
+            : new Date();
     }
     
     getSpeed(time) {
-        console.log(time);
-        const speed = this.accelaration * time;
-        console.log();
-
-
-//????
+        const calculatedSpeed = this.acceleration * time;
+        return calculatedSpeed >= this.maxSpeed ? this.maxSpeed : calculatedSpeed;
     }
 
     changePrice(newPrice) {
-        if (typeof newPrice === "number") {
-            this.price = newPrice;
+        if (typeof newPrice !== "number") {
+            throw new Error("Price should be a number!");
         }
-
-        throw new Error("Price must be a number");
+        this.price = newPrice;
     }
 
     changeStatus(newStatus) {
-        console.log(Object.values(CAR_STATUS));
-        if (Object.values(CAR_STATUS).includes(newStatus)) {
-            this.status = newStatus;
+        const acceptableStatuses = Object.values(CAR_STATUS);
+        if (!acceptableStatuses.includes(newStatus)) {
+            throw new Error("Incorrect status");
         }
+        this.status = newStatus;
     }
     
+    static isCar(inputObj) {
+        return inputObj instanceof Car;
+    }
+
+    static isRefund(car) {
+        if (!Car.isCar(car)) {
+            throw new Error("Input should be a car!");
+        }
+
+        return car.status === CAR_STATUS.REFUND;
+    }
 }
 
-const myCar = new Car(10, 200, 100_000);
-
-console.log(myCar);
+module.exports = Car;

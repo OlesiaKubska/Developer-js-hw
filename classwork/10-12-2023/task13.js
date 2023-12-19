@@ -10,6 +10,18 @@ class ElectricCar extends Car {
 
         this.batterCapacity = batterCapacity;
     }
+
+    getRemainingBattery(time) {
+        return (
+            ((this.batteryCapacity - this.#calculateBatteryDrainagePerSec() * time) /
+                this.batteryCapacity) *
+            100
+        );
+    }
+
+    #calculateBatteryDrainagePerSec() {
+        return (this.batteryCapacity * this.acceleration) / 100000;
+    }
 }
 
 const myElectric = new ElectricCar(20, 300, 200_000, 10000);

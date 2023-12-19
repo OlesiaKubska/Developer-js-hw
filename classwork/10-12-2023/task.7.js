@@ -4,7 +4,7 @@
 // It should have a private field where cars are stored
 // A getter availableCars to see all available cars for sell
 
-
+const Car = require('./task6.js');
 
 
 class CarDealer {
@@ -30,4 +30,4 @@ class CarDealer {
     }
 }
 
-const myDealer = new myDealer;
+const myDealer = new CarDealer();

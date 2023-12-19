@@ -3,8 +3,9 @@
 // Method should be asynchronous
 // Method should accept cars amount to order as a parameter
 // Handle error in this method in case something goes wrong
-
+const Car = require('./task6');
 const { CAR_STATUS } = require("./const");
+const Car = require('./task6');
 
 class CarDealer {
     #listOfCars = [];
@@ -27,7 +28,6 @@ class CarDealer {
 
     removeCar(id) {
         this.#listOfCars = this.#listOfCars.filter((car) => car.id !== id);
-
     }
 
     acceptReturnedCar(car) {
@@ -41,22 +41,22 @@ class CarDealer {
     async orderCars(numberOfCars) {
         try {
             const orderedCars = await getFromFactory(numberOfCars);
-            console.log(orderedCars);
-        } catch {
-
+            orderedCars.forEach(car => this.addCar(car));
+            console.log(`${orderedCars.length} cars ordered and added to inventory.`);
+            return orderedCars;
+        } catch (e) {
+            console.error(e);
+            return this.#listOfCars;
         }
-
-    }
-
-
-
-    get availableCars() {
-
     }
 
     get totalPrice() {
-        
+        return this.#listOfCars.reduce((total, car) => total + car.price, 0);
+    }
+
+    static isCarAfterRefund(car) {
+        return Car.isRefund(car);
     }
 }
 
-const myDealer = new myDealer;
+const myDealer = new CarDealer();

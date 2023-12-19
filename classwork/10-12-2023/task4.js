@@ -1,4 +1,3 @@
-
 // 4.
 // Add new fields:
 // id
@@ -6,30 +5,26 @@
 // production date
 // and a method changePrice
 
-
-
 class Car {
     wheels = 4;
 
-    constructor(accelaration, maxSpeed) {
-        this.accelaration = accelaration;
+    constructor(acceleration, maxSpeed, price, productionDate) {
+        this.acceleration = acceleration;
         this.maxSpeed = maxSpeed;
-        this.price = this.price;
-        this.productionDate = new Date(this.productionDate);
+        this.price = price;
+        this.productionDate = new Date(productionDate);
         this.id = Date.now();
     }
     
     getSpeed(time) {
-        console.log(time);
-
-//????
+        const calculatedSpeed = this.acceleration * time;
+        return calculatedSpeed >= this.maxSpeed ? this.maxSpeed : calculatedSpeed;
     }
 
     changePrice(newPrice) {
         if (typeof newPrice === "number") {
             this.price = newPrice;
         }
-
         throw new Error("Price must be a number");
     }
     

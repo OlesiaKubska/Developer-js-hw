@@ -7,10 +7,15 @@
 class Car {
     wheels = 4;
 
-    constructor(accelaration, maxSpeed) {
-        this.accelaration = accelaration;
+    constructor(acceleration, maxSpeed) {
+        this.acceleration = acceleration;
         this.maxSpeed = maxSpeed;
     }
 
-    
+    getSpeed(time) {
+        const calculatedSpeed = this.acceleration * time;
+        return calculatedSpeed >= this.maxSpeed ? this.maxSpeed : calculatedSpeed;
+    }
 }
+
+const myCar = new Car(3, 150);
