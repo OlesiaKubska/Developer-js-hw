@@ -49,10 +49,6 @@ function dealHand(deck) {
 
 //Analiza Ręki: Program analizuje rozdaną rękę, aby określić najlepszy układ pokerowy.
 function analyzeHand(hand) {
- //W przykładzie, który podałem, funkcja analyzeHand ma za zadanie tę analizę przeprowadzić.
- //W moim kodzie ta funkcja jest tylko szkicem,
- //i wymaga dalszego uzupełnienia o logikę analizy ręki,
- //tak aby mogła rozpoznawać różne układy pokerowe, takie jak para, trójka, strit, kolor
  return "Hand analysis logic goes here";
 }
 

@@ -44,7 +44,6 @@ function dealHand(deck) {
 
 //Analiza Ręki: Program analizuje rozdaną rękę, aby określić najlepszy układ pokerowy.
 function analyzeHand(hand) {
- // Перетворюємо руку в масив об'єктів { rank, suit }
  const parsedHand = hand
   .map((card) => ({
    rank: card.substring(0, card.length - 1),
@@ -55,7 +54,6 @@ function analyzeHand(hand) {
    suit: card.suit,
   }));
 
- // Сортуємо руку за рангом
  parsedHand.sort((a, b) => a.rank - b.rank);
 
  const isFlush = parsedHand.every(
@@ -95,7 +93,7 @@ function play() {
  let pokerSet = analyzeHand(hand);
 
  const handElement = document.getElementById("hand");
- handElement.innerHTML = ""; // Очистити вміст контейнера для карт
+ handElement.innerHTML = "";
 
  // Add card-SVG imeges
  hand.forEach((card) => {
