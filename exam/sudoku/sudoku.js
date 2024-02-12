@@ -1,10 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
  const startButton = document.getElementById("start-button");
+ const checkButton = document.getElementById("check-button");
+ const resetButton = document.getElementById("reset-button");
+ let board = getInitialBoard();
+
  startButton.addEventListener("click", function () {
-  const initialBoard = getInitialBoard();
-  generateBoard(initialBoard);
+  generateBoard(board);
+ });
+
+ //check-button
+ checkButton.addEventListener("click", function () {
+  if (checkSudokuSolution(board)) {
+   alert("Congratulations! The solution is correct.");
+  } else {
+   alert("There are some errors in your solution. Please, try again.");
+  }
+ });
+
+ // reset-button
+ resetButton.addEventListener("click", function () {
+  board = getInitialBoard();
+  generateBoard(board);
  });
 });
+
+function checkSudokuSolution(board) {
+ for (let row = 0; row < 9; row++) {
+  for (let col = 0; col < 9; col++) {
+   const value = board[row][col];
+   if (value === "." || !isValid(board, row, col, value)) {
+    return false;
+   }
+  }
+ }
+ return true;
+}
 
 function getInitialBoard() {
  return [

@@ -49,7 +49,46 @@ function dealHand(deck) {
 
 //Analiza Ręki: Program analizuje rozdaną rękę, aby określić najlepszy układ pokerowy.
 function analyzeHand(hand) {
- return "Hand analysis logic goes here";
+ const parsedHand = hand
+  .map((card) => ({
+   rank: card.substring(0, card.length - 1),
+   suit: card.charAt(card.length - 1),
+  }))
+  .map((card) => ({
+   rank: "23456789TJQKA".indexOf(card.rank) + 2,
+   suit: card.suit,
+  }));
+
+ parsedHand.sort((a, b) => a.rank - b.rank);
+
+ const isFlush = parsedHand.every(
+  (card, _, [firstCard]) => card.suit === firstCard.suit
+ );
+ const isStraight = parsedHand.every(
+  (card, index, arr) => index === 0 || card.rank === arr[index - 1].rank + 1
+ );
+ const rankCounts = parsedHand.reduce((acc, card) => {
+  acc[card.rank] = (acc[card.rank] || 0) + 1;
+  return acc;
+ }, {});
+
+ const counts = Object.values(rankCounts);
+ const isFourOfAKind = counts.includes(4);
+ const isThreeOfAKind = counts.includes(3);
+ const isPair = counts.includes(2);
+ const isTwoPair = counts.filter((count) => count === 2).length === 2;
+ const isFullHouse = isThreeOfAKind && isPair;
+
+ if (isFlush && isStraight && parsedHand[0].rank === 10) return "Royal Flush";
+ if (isFlush && isStraight) return "Straight Flush";
+ if (isFourOfAKind) return "Four of a Kind";
+ if (isFullHouse) return "Full House";
+ if (isFlush) return "Flush";
+ if (isStraight) return "Straight";
+ if (isThreeOfAKind) return "Three of a Kind";
+ if (isTwoPair) return "Two Pair";
+ if (isPair) return "One Pair";
+ return "High Card";
 }
 
 let deck = createDeck();
